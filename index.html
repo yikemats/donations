@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+
+<html lang=”en”>
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Title -->
+    <title>NYC Pays Forward to Immigrants</title>
+
+    <!-- Bulma Stylesheet -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+
+    <!-- Heat Chart -->
+    <link rel="stylesheet" href="base.css">
+    <link rel="stylesheet" href="custom.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+
+    <script>
+     d3.csv("https://raw.githubusercontent.com/yikemats/asylum-seekers/main/hotel_list_d3.csv")        
+        .then(data => {
+          console.log(data)
+
+        const myChart = d3
+           .select('#my-svg-chart')
+           .append('svg')
+           .attr('width', 600)
+           .attr('height', 160)
+        const hotels = myChart
+            .selectAll('rect')
+           .data(data)
+           .join('rect');
+        const gridSize = 20, gap = 2;
+
+        hotels
+           .attr('x', (d,i) => {
+             return Math.floor(i%25)*(gridSize+ gap);
+           })
+           .attr('y', (d,i) => {
+             return Math.floor(i/25)*(gridSize+ gap);
+           })
+           .attr('width', gridSize)
+           .attr('height', gridSize)
+
+        hotels.style('fill', d=> {
+           if (d.cost < 100) {return '#C0C0C0'}
+           else if (d.cost < 200) {return '#FFFF66'}
+           else if (d.cost < 300) {return '#ff8000'}
+           else if (d.cost >= 300) {return '#ff0000'}
+        })
+        const colors = ["#ff0000", "#ff8000", "#FFFF66", "#C0C0C0"];
+
+        const legendWidth = 20;
+        const legendHeight = 20;
+        const legendPadding = 120;//legend gap
+        const legendX = 20;
+        const legendY = 100;
+
+        const legend = myChart.append("g")
+          .attr("class", "legend")
+          .attr("transform", `translate(${legendX}, ${legendY})`);
+
+        const legendItems = legend.selectAll(".legend-item")
+          .data(colors)
+          .enter()
+          .append("g")
+          .attr("class", "legend-item")
+          .attr("transform", (d, i) => `translate( ${i * (legendHeight + legendPadding)},0)`);
+        legendItems.append("rect")
+          .attr("width", legendWidth)
+          .attr("height", legendHeight)
+          .attr("fill", d => d);
+
+        const labels = ["Over $300", "$200 - $299", "$100 - $199", "Under $99"];
+
+        legendItems.append("text")
+          .attr("x", legendWidth + 5)
+          .attr("y", legendHeight / 2)
+          .attr("alignment-baseline", "middle")
+          .text((d, i) => labels[i]);
+        })
+    </script>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="192x192" href="favicon-192x192.png" />
+    <link rel="icon" type="image/png" sizes="180x180" href="favicon-180x180.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+
+    <!-- Footer-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <style>
+        .text-container {
+        max-width: 660px;
+        margin: 0 auto;
+        line-height: 30px;
+        }
+        .text-container img {
+            max-width: 100%;
+        }
+        .chart-holder .caption {
+        font-size: 0.9;
+        color: grey;
+        text-align: right;
+        }
+        .footer-basic {
+        padding:40px 0;
+        background-color:#ffffff;
+        color:#4b4c4d;
+        }
+        .footer-basic ul {
+        padding:0;
+        list-style:none;
+        text-align:center;
+        font-size:18px;
+        line-height:1.6;
+        margin-bottom:0;
+        }
+        .footer-basic li {
+        padding:0 10px;
+        }
+        .footer-basic ul a {
+        color:inherit;
+        text-decoration:none;
+        opacity:0.8;
+        }
+        .footer-basic ul a:hover {
+        opacity:1;
+        }
+        .footer-basic .social {
+        text-align:center;
+        padding-bottom:20px;
+        }
+        .footer-basic .social > a {
+        font-size:24px;
+        width:40px;
+        height:40px;
+        line-height:40px;
+        display:inline-block;
+        text-align:center;
+        border-radius:50%;
+        border:1px solid #e126b9;
+        margin:0 8px;
+        color:inherit;
+        opacity:0.75;
+        }
+        .footer-basic .social > a:hover {
+        opacity:0.9;
+        }
+        .footer-basic .copyright {
+        margin: top 10px;
+        text-align:center;
+        font-size:13px;
+        color:#e126b9;
+        margin: bottom 0px;
+        }
+
+    </style>
+    
+  </head>
+
+  <body>
+
+    <div class='text-container'>
+
+        <!-- Headline -->
+        <br>
+        <button class="button">Economy</button>
+        <div class="content is-medium">
+            <p class="title is-2">NYC Pays Forward to Immigrants, But When Will It Be Paid Off?</p>
+            <p class="subtitle is-4">The number of asylum seekers in NYC is on the rise. As of July 2023, there are over 80,000 individuals, a significant portion of whom are occupying high-cost hotel rooms in the heart of the city. Is it justified for NYC to spend billions of dollars on this?</p>
+        </div>
+
+        <!-- Headline Photo -->
+        <div class='chart-holder'>
+            <img src="asylum_seekers_rs2.jpg" alt="A family just arrived in NYC from Venezuela">
+            <div class="caption">A family just arrived in NYC from Venezuela. </div>
+        </div>
+
+        <!-- Byline -->
+            <p>
+                <strong>By Yuka Ikematsu</strong> <small><a target=_new href="https://twitter.com/YukaI_NYC">@YukaI_NYC</a></small><br><em>July 8, 2023</em>
+            </p>
+
+
+        <!-- Content -->
+        <div class="content is-medium">
+          <p>I encountered a family of immigrants who had just arrived from Venezuela in front of a luxury hotel near Times Square in New York. The head of the family was Micel. When I told him I was a reporter from Japan, he started talking about his long journey.</p>
+        
+          <p>"We walked through the jungle with my wife and two children all the way from Venezuela, where wild animals roam. It has been a month since we arrived in New York, but I still haven't been able to find a job. I would appreciate it if you could introduce me to a job."</p>
+
+          <p>In New York City, where the COVID-19 pandemic has subsided and tourists have started to return, a large number of immigrants from Venezuela, Nicaragua, Haiti, and other countries are flocking in, putting pressure on the city's finances. According to the Office of New York Comptroller, as of July 5, 2023, 81,574 immigrants were staying in the city's shelters, a sharp increase from the 30,000 people until April 2022.</p>
+
+          <p>The trigger for this rapid increase was the practice of governments in states and cities near the border, such as Texas and Arizona, putting immigrants who crossed the border on buses and sending them to cities like New York and Washington, D.C. Since the inauguration of the Democratic Party's Biden administration in 2021, a large number of immigrants have been coming across the border, prompting the Republican-controlled southern states to take a hardline approach.</p>
+
+          <h5>Envious of Immigrants Staying in Luxury Hotels?</h5>
+
+          <p>Mayor Eric Adams of New York City raised a cry of "enough is enough" in January 2023 in response to the continuous influx of immigrants. Mayor Adams declared a state of emergency in October 2022 and contracted with large hotels in downtown Manhattan to convert them into shelters for immigrants. The average cost the city pays per room is $256.</p>
+
+          <p>One of the reasons for the high prices is that most of the hotels used as shelters are in prime locations that tourists would prefer. By cross-referencing the data published by <a target=_new href="https://comptroller.nyc.gov/reports/accounting-for-asylum-seekers/">the Comptroller's Office</a> and the list reported by <a target=_new href="https://www.bloomberg.com/news/articles/2023-06-09/nyc-migrants-how-nyc-is-finding-housing-and-what-it-costs?sref=V6w1Qdnr">Bloomberg</a>, the map below shows the locations of those hotels. <strong>Check which hotel in your area</strong> has become a shelter by hovering your cursor over the map. The nightly rate the city pays for that hotel will also be displayed.</p>
+
+          <div class="flourish-embed flourish-map" data-src="visualisation/14367354" alt="A map of hotels where asylum seekers stay."><script src="https://public.flourish.studio/resources/embed.js"></script></div>
+
+          <div>
+            <h5>Seven Hotels Were Charging Over $300 </h5>
+            <h6>A Heat Chart Illustrating the Per-Night Charges of the 37 Hotels.</h6>
+            <div id="my-svg-chart" alt="Heatchart of hotel costs"></div>
+          </div>
+
+          <p>While New Yorkers may find it perplexing why such substantial fees are paid for immigrants, as someone born in Japan where immigrant numbers are scarce, I couldn't help but think, "Americans have an admirable culture of paying it forward!" This thought raised a question: When will the costs of accepting immigrants be offset by the amount they pay in taxes to the government through their labor?</p>
+
+          <p>Let's find out!</p>
+
+          <h5>Japan Can Learn from New York</h5>
+
+          <p>First, divide the budget disclosed by NYC, $4.3 billion between April of 2022 and July 2024, by the number of target months to calculate the monthly cost. Then, take <a target=_new href="https://data.cityofnewyork.us/Social-Services/DHS-Daily-Report/k46n-sa2m">the number of adults</a> living in the shelter on the 1st of each month and assume they obtain <a target=_new href="https://www.ziprecruiter.com/Salaries/Migrant-Worker-Salary">the average monthly income</a> that immigrants are said to earn after about five months of arrival. This calculation will determine the cumulative <a target=_new href="https://www.thebalancemoney.com/new-york-city-taxes-3193281">tax</a> contribution made to NYC each month. When will the offset occur?</p>
+
+          <div class="flourish-embed flourish-bar-chart-race" data-src="visualisation/14382972" alt="A timeline graph comparing the cost and revenue of NYC regarding immigrants."><script src="https://public.flourish.studio/resources/embed.js"></script></div>
+
+
+          <p>The answer was surprisingly early, in December 2025. Paying forward will actually be paid off! Of course, this is just an estimate. But still, it may be something that Japan, where the aging population is advancing and the country's economic growth is in jeopardy, should consider as a reference.</p>
+
+        </div>
+
+        <!-- Footer -->
+        <p style="font-size: small; margin-top: 2rem; text-align: center;">
+            <i>All the code and data for this project is available on <a href="https://github.com/yikemats/asylum-seekers">GitHub</a></i><br>.
+        </p>
+
+        <div class="footer-basic">
+            <footer>
+                <div class="social">
+                    <a href="https://twitter.com/YukaI_NYC" target="_blank"><i class="icon ion-social-twitter"></i></a><a href="https://github.com/yikemats" target="_blank"><i class="icon ion-social-github"></i></a><a href="https://www.instagram.com/tompearlbasil/" target="_blank"><i class="icon ion-social-instagram"></i></a></i></a>
+                </div>
+                <p class="copyright">Yuka Ikematsu © 2023</p>
+            </footer>
+        
+        </div>
+
+    </div>
+
+  </body>
+
+</html>
