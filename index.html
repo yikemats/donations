@@ -31,10 +31,12 @@
     <style>
 
       /* Container holding the image and the text */
-      .img-container {
+      .container {
         position: relative;
         text-align: center;
-        font-family: 'Markazi Text', serif;
+        font-size: 40px;
+        font-family: 'Lobster', cursive;
+        margin: 0;
         color: black;
       }
 
@@ -60,10 +62,6 @@
         font-family: 'Markazi Text', serif;
       }
 
-      .text-container img {
-        max-width: 100%;
-      }
-
       .chart-holder .caption {
         font-size: 0.9;
         font-family: 'Markazi Text', serif;
@@ -71,11 +69,11 @@
         text-align: right;
       }
 
-      h1 {
+      /* h1 {
         font-size: 40px;
         font-family: 'Lobster', cursive;
         margin: 0;
-      }
+      } */
 
       h4 {
         font-size: 36px;
@@ -141,8 +139,9 @@
   <body>
 
       <!-- Article Title -->
-    <div class='img-container'>
-       <div class="centered"><h1>Mask vs. Zuckerberg: <br> Billionaire Showdown! Who is Giving Back More to Society?</h1><img src="3926.jpg" alt="The illustration of boxing ring."></div>
+    <div class='container'>
+       <img src="3926.jpg" alt="The illustration of boxing ring." style="width:100%;">
+       <div class="centered">Mask vs. Zuckerberg: <br> Billionaire Showdown! Who is Giving Back More to Society?</div>
     </div>
 
     <div class="caption">
