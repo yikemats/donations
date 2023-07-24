@@ -5,8 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <!-- Title -->
-    <title>Mask vs. Zuckerberg</title>
+    <title>Mask vs. Zuck</title>
 
     <!-- Bulma Stylesheet -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
@@ -29,6 +30,25 @@
 
     <style>
 
+      body blockquote {
+        background-color: rgb(249, 227, 218);
+      }
+
+      /* Container holding the image and the text */
+      .img-container {
+        position: relative;
+        text-align: center;
+        font-family: 'Markazi Text', serif;
+        color: black;
+      }
+
+      .centered {
+        position: absolute;
+        top: 70%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+
       .text-container {
         max-width: 660px;
         margin: 0 auto;
@@ -42,19 +62,13 @@
 
       .chart-holder .caption {
         font-size: 0.9;
-        font-family: ';
+        font-family: 'Markazi Text', serif;
         color: grey;
         text-align: right;
       }
 
-      body {
-        font-family: 'Times New Roman', Times, serif;
-        margin: 0;
-        padding: 0;
-        }
-
       h1 {
-        font-size: 48px;
+        font-size: 40px;
         font-family: 'Lobster', cursive;
         margin: 0;
       }
@@ -67,8 +81,8 @@
       
       .footer-basic {
         padding:40px 0;
-        background-color:#ffffff;
-        color:#4b4c4d;
+        background-color: rgb(249, 227, 218);
+        color:#451fb7;
       }
       .footer-basic ul {
         padding:0;
@@ -101,7 +115,7 @@
         display:inline-block;
         text-align:center;
         border-radius:50%;
-        border:1px solid #53dde7;
+        border:1px solid #451fb7;
         margin:0 8px;
         color:inherit;
         opacity:0.75;
@@ -110,10 +124,10 @@
         opacity:0.9;
       }
       .footer-basic .copyright {
-        margin: top 10px;
+        margin: top 15px;
         text-align:center;
         font-size:13px;
-        color:#53dde7;
+        color:#451fb7;
         margin: bottom 0px;
       }
 
@@ -123,18 +137,26 @@
 
   <body>
 
-   <main>
+    <div class='img-container'>
 
-        <!-- Article Title -->
-            <h1>Mask vs. Zuckerberg: Billionaire Showdown! Who is Giving Back More to Society?</h1>
-        </div>
+      <!-- Article Title -->
+      <div class="centered"><h1>Mask vs. Zuckerberg: <br> Billionaire Showdown! Who is Giving Back More to Society?</h1>
+      </div>
+      <img src="box-ring-arena-sports-fighting-cartoon-illustration/3926.jpg" alt="The illustration of boxing ring.">
+
+    </div>
+
+    <div class="chart-holder">
+      <div class="caption">
+      <a href="https://www.freepik.com/free-vector/box-ring-arena-sports-fighting-cartoon-illustration_6198177.htm#query=boxing%20ring&position=2&from_view=keyword&track=ais">Image by vectorpocket</a> on Freepik</div>
+    </div>
 
     <div class='text-container'>
         <!-- Byline -->
-            <p>
-                <strong>By Yuka Ikematsu</strong> <small><a target=_new href="https://twitter.com/YukaI_NYC">@YukaI_NYC</a></small><br><em>July 23, 2023</em>
-            </p>
-
+        <br>
+        <p>
+          <strong>By Yuka Ikematsu</strong> <a target=_new href="https://twitter.com/YukaI_NYC">@YukaI_NYC</a><br><em>July 23, 2023</em>
+        </p>
 
         <!-- Content -->
         <div class="content is-large">
@@ -178,8 +200,8 @@
         </div>
 
         <!-- Footer -->
-        <p style="font-size: small; margin-top: 2rem; text-align: center;">
-            <i>All the code and data for this project is available on <a href="https://github.com/yikemats/asylum-seekers">GitHub</a></i><br>.
+        <p style="font-size: medium; margin-top: 2rem; text-align: center;">
+            <i>All the code and data for this project is available on <a href="https://github.com/yikemats/donations">GitHub</a></i><br>.
         </p>
 
         <div class="footer-basic">
