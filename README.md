@@ -1,4 +1,4 @@
-# [Mask vs. Zuckerberg: Billionaire Showdown! Who is Giving Back More to Society?](https://yikemats.github.io/donations/)
+# [Musk vs. Zuckerberg: Who is Giving Back More to Society?](https://yikemats.github.io/donations/)
 
 ## About this project
 This is my third project for [the Lede Program](https://ledeprogram.com) at Columbia University. You can read the story here: [https://yikemats.github.io/donations/](https://yikemats.github.io/donations/)
