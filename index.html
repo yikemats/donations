@@ -9,9 +9,6 @@
     <!-- Title -->
     <title>Mask vs. Zuck: Donation Battle</title>
 
-    <!-- ScrollTrigger -->
-    <link rel="stylesheet" href="styles.css">
-
     <!-- Bulma Stylesheet -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
 
@@ -47,6 +44,43 @@
         transform: translate(-50%, -50%);
       }
 
+      .img-container {
+        position: relative;
+        display: inline-block;
+      }
+
+      .img1 {
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: 1;
+        object-fit: cover;
+      }
+
+      .img2 {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 2;
+        object-fit: cover;
+      }
+
+      @media screen and (max-width: 600px) {
+        .img1,
+        .img2 {
+          width: 25%;
+        }
+        h1 {
+          font-size: 5vw;
+        }
+      }
+
+      @media screen and (min-width: 601px) {
+        h1 {
+          font-size: 48px;
+        }
+      }
+
       body {
         background-color: rgb(253, 232, 225);
       }
@@ -69,11 +103,12 @@
         text-align: right;
       }
 
+
       h1 {
-        font-size: 40px;
+        /* font-size: 48px; */
         font-family: 'Lobster', cursive;
         margin: 0;
-      }
+        }
 
       h4 {
         font-size: 36px;
@@ -138,26 +173,28 @@
 
   <body>
 
-    <!-- ScrollTrigger -->
-    <!-- <div class="div1"></div>
-    <div class="div2">
-      <div class="square"></div>
-    </div>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <script src = "app1.js"></script> -->
-
     <!-- Article Title -->
+
     <div class='container'>
-      <img src="3926.jpg" alt="The illustration of boxing ring." style="width:100%;">
-      <div class="centered"><h1>Musk vs. Zuckerberg: <br> Billionaire Showdown! Who Gives Back More to Society?</h1>
+
+      <div class="img-container">
+        <img src="ring.jpg" alt="The illustration of a boxing ring." style="width:100%;">
+        <img class="img1" src="elon-image200x201.png" alt="Elon Musk wearing Taxido looking behind."
+          style="position: absolute; top: 100; right: 100;">
+        <img class="img2" src="zuck-image200x199.png" alt="Mark Zuckerberg looking slightly up wearing a khaki T-shirt."
+          style="position: absolute; top: 100; left: 100;">
       </div>
+  
+      <div class="centered">
+        <h1>Musk vs. Zuckerberg: <br> Who Gives Back More to Society?</h1>
+      </div>
+  
       <div class="chart-holder">
        <div class="caption">
         <a href="https://www.freepik.com/free-vector/box-ring-arena-sports-fighting-cartoon-illustration_6198177.htm#query=boxing%20ring&position=2&from_view=keyword&track=ais">Image by vectorpocket</a> on Freepik
        </div>
       </div>
+
     </div>
 
     <div class='text-container'>
@@ -225,7 +262,40 @@
         </div>
 
     </div>
-   </main>
+
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+   <script>
+  gsap.fromTo(
+    ".img1",
+    {
+      x: 500,
+      rotation: 0,
+    },
+    {
+      duration: 2,
+      x: 0,
+      rotation: 360,
+      repeat: 1,
+    }
+  );
+
+  gsap.fromTo(
+    ".img2",
+    {
+      x: -500,
+      rotation: 0,
+    },
+    {
+      duration: 2,
+      x: 0,
+      rotation: -360,
+      repeat: 1,
+    }
+  );
+   </script>
+
   </body>
 
 </html>
